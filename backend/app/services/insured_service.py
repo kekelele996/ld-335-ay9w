@@ -3,6 +3,13 @@ from decimal import Decimal
 from app.schemas.insured import InsuredVerifyRequest, InsuredVerifyResponse
 
 
+def get_account_balance(insured_id: str) -> Decimal:
+    """按参保号返回模拟个人账户余额，口径与身份核验接口一致。"""
+    tail = insured_id[-2:]
+    suffix = int(tail) if tail.isdigit() else 0
+    return Decimal("2860.50") + Decimal(suffix)
+
+
 def verify_insured(payload: InsuredVerifyRequest, principal: dict) -> InsuredVerifyResponse:
     suffix = int(payload.id_card[-2:]) if payload.id_card[-2:].isdigit() else 0
     types = ["职工医保", "居民医保", "新农合"]
