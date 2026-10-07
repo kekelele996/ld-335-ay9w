@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS settlement_records (
+  id SERIAL PRIMARY KEY,
+  settlement_no VARCHAR(64) UNIQUE NOT NULL,
+  batch_no VARCHAR(64) NOT NULL,
+  insured_id VARCHAR(32) NOT NULL,
+  total_amount NUMERIC(12, 2) NOT NULL,
+  reimbursed_amount NUMERIC(12, 2) NOT NULL,
+  self_pay_amount NUMERIC(12, 2) NOT NULL,
+  status VARCHAR(32) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS audit_logs (
+  id SERIAL PRIMARY KEY,
+  client_id VARCHAR(64) NOT NULL,
+  path VARCHAR(255) NOT NULL,
+  action VARCHAR(64) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
