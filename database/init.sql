@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS settlement_records (
   insured_id VARCHAR(32) NOT NULL,
   total_amount NUMERIC(12, 2) NOT NULL,
   reimbursed_amount NUMERIC(12, 2) NOT NULL,
+  account_pay_amount NUMERIC(12, 2) NOT NULL DEFAULT 0.00,
   self_pay_amount NUMERIC(12, 2) NOT NULL,
   status VARCHAR(32) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

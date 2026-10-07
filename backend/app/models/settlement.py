@@ -17,6 +17,7 @@ class SettlementRecord(Base):
     insured_id: Mapped[str] = mapped_column(String(32), index=True)
     total_amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
     reimbursed_amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
+    account_pay_amount: Mapped[Decimal] = mapped_column(Numeric(12, 2), default=Decimal("0.00"))
     self_pay_amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
     status: Mapped[str] = mapped_column(String(32), default="SUCCESS")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=business_now)
